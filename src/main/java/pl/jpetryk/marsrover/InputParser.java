@@ -15,7 +15,7 @@ class InputParser {
   private final Scanner scanner;
   private final PrintStream printStream;
 
-  public InputParser(Scanner scanner, PrintStream printStream) {
+  InputParser(Scanner scanner, PrintStream printStream) {
     this.scanner = scanner;
     this.printStream = printStream;
   }

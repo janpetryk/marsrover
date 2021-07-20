@@ -14,7 +14,8 @@ class MarsRoverApplicationTest extends Specification {
         given:
         def input = "3\n3\nNORTH\nFRFLF\n"
         def scanner = new Scanner(new ByteArrayInputStream(input.getBytes()))
-        MarsRoverApplication application = new MarsRoverApplication(scanner, new PrintStream(outputStream))
+        def inputParser = new InputParser(scanner, new PrintStream(outputStream))
+        MarsRoverApplication application = new MarsRoverApplication(inputParser, new PrintStream(outputStream))
 
         when:
         application.run()
@@ -26,7 +27,8 @@ class MarsRoverApplicationTest extends Specification {
     def "should prompt if user gives wrong position input"() {
         given:
         def scanner = new Scanner(new ByteArrayInputStream(givenInput.getBytes()))
-        MarsRoverApplication application = new MarsRoverApplication(scanner, new PrintStream(outputStream))
+        def inputParser = new InputParser(scanner, new PrintStream(outputStream))
+        MarsRoverApplication application = new MarsRoverApplication(inputParser, new PrintStream(outputStream))
 
         when:
         Thread.start { application.run() }

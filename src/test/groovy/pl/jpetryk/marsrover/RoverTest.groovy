@@ -74,9 +74,9 @@ class RoverTest extends Specification {
         def givenRover = new Rover(new Point(0, 0), NORTH)
 
         when:
-        (1..10).forEach {givenRover.moveForward()}
+        (1..10).forEach { givenRover.moveForward() }
         givenRover.rotateRight()
-        (1..10).forEach {givenRover.moveForward()}
+        (1..10).forEach { givenRover.moveForward() }
 
         then:
         givenRover.currentPosition == new Point(10, 10)

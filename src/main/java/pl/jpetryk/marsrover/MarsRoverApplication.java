@@ -34,22 +34,19 @@ public class MarsRoverApplication {
 
     List<Consumer<Rover>> parsedCommands = parseCommands();
     parsedCommands.forEach(action -> action.accept(kata));
-    printStream.print(kata.report());
-    printStream.print(lineSeparator());
+    printWithNewLine(kata.report());
   }
 
   private int parseInt(String message) {
     Integer result = null;
 
     while (result == null) {
-      printStream.print(message);
-      printStream.print(lineSeparator());
+      printWithNewLine(message);
       try {
         result = scanner.nextInt();
       } catch (NoSuchElementException e) {
         scanner.nextLine();
-        printStream.print("Value has to be an integer.");
-        printStream.print(lineSeparator());
+        printWithNewLine("Value has to be an integer.");
       }
     }
     return result;
@@ -60,14 +57,12 @@ public class MarsRoverApplication {
     Direction result = null;
 
     while (result == null) {
-      printStream.print("Enter direction robot is facing (NORTH, SOUTH, EAST, WEST):");
-      printStream.print(lineSeparator());
+      printWithNewLine("Enter direction robot is facing (NORTH, SOUTH, EAST, WEST):");
       try {
         result = Direction.valueOf(scanner.next());
       } catch (IllegalArgumentException e) {
         scanner.nextLine();
-        printStream.print("Value has to be an of NORTH, SOUTH, EAST, WEST.");
-        printStream.print(lineSeparator());
+        printWithNewLine("Value has to be an of NORTH, SOUTH, EAST, WEST.");
       }
     }
 
@@ -78,8 +73,7 @@ public class MarsRoverApplication {
     List<Consumer<Rover>> result = null;
 
     while (result == null) {
-      printStream.print("Enter commands (F, B, L, R):");
-      printStream.print(lineSeparator());
+      printWithNewLine("Enter commands (F, B, L, R):");
       try {
 
         String commands = scanner.next();
@@ -90,11 +84,15 @@ public class MarsRoverApplication {
             .collect(Collectors.toList());
       } catch (IllegalArgumentException e) {
         scanner.nextLine();
-        printStream.print("Value has to be an of (F, B, L, R).");
-        printStream.print(lineSeparator());
+        printWithNewLine("Value has to be an of (F, B, L, R).");
       }
     }
     return result;
+  }
+
+  private void printWithNewLine(String s) {
+    printStream.print(s);
+    printStream.print(lineSeparator());
   }
 
 }

@@ -1,0 +1,26 @@
+plugins {
+    id 'application'
+    id 'java'
+    id 'groovy'
+}
+
+group = 'pl.jpetryk'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+mainClassName = "pl.jpetryk.marsrover.MarsRoverApplication"
+
+run {
+    standardInput = System.in
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.codehaus.groovy:groovy:3.0.5'
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+}
+
+test {
+    useJUnitPlatform()
+}
